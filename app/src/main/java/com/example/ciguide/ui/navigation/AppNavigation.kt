@@ -1,7 +1,7 @@
 package com.example.ciguide.ui.navigation
 
 import com.example.ciguide.ui.home.HomeScreen
-import com.example.ciguide.ui.navigation.MainScreen
+import androidx.navigation.compose.rememberNavController
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.*
 
@@ -9,8 +9,8 @@ import androidx.navigation.compose.*
 fun AppNavigation(){
     val navController = rememberNavController()
 
-        NavHost(navController = navController,
-                startDestination = "home"
+        NavHost(startDestination = "home",
+                navController = navController
         ){
             composable("home"){
                 HomeScreen(navController = navController)
