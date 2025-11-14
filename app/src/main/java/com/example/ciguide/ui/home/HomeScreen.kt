@@ -1,11 +1,6 @@
 package com.example.ciguide.ui.home
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -16,6 +11,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+
+import com.example.ciguide.ui.navigation.Screen
+
 
 @Composable
 fun HomeScreen(navController: NavController){
@@ -41,8 +39,8 @@ fun HomeScreen(navController: NavController){
 
         Button(onClick = {
 
-            navController.navigate("main") {
-                popUpTo("home") { inclusive = true }
+            navController.navigate(Screen.Main.ruta) {
+                popUpTo(Screen.Home.ruta) { inclusive = true }
             }
         }) {
             Text("Comenzar")

@@ -9,13 +9,14 @@ import androidx.navigation.compose.*
 fun AppNavigation(){
     val navController = rememberNavController()
 
-        NavHost(startDestination = "home",
-                navController = navController
+        NavHost(
+            navController = navController,
+            startDestination = Screen.Home.ruta
         ){
-            composable("home"){
+            composable(Screen.Home.ruta){
                 HomeScreen(navController = navController)
         }
-            composable("main"){
+            composable(Screen.Main.ruta){
                 MainScreen()
             }
 
