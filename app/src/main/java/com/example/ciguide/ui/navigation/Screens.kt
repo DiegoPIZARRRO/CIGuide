@@ -11,4 +11,6 @@ sealed class Screen(val ruta: String, val title: String, val icon: ImageVector){
     object Jefes: Screen("jefes", "Jefes", Icons.Default.Layers)
     object Progresion: Screen("progresion", "Progresion", Icons.Default.DateRange)
     object Items: Screen("items", "Items", Icons.Default.Colorize)
+    object Secret: Screen("secret", "Secret", Icons.Default.Lock)
+
 }

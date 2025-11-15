@@ -4,6 +4,7 @@ import com.example.ciguide.ui.home.HomeScreen
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.*
+import com.example.ciguide.ui.secret.secretScreen
 
 @Composable
 fun AppNavigation(){
@@ -18,6 +19,9 @@ fun AppNavigation(){
         }
             composable(Screen.Main.ruta){
                 MainScreen()
+            }
+            composable(Screen.Secret.ruta){
+                secretScreen()
             }
 
 
