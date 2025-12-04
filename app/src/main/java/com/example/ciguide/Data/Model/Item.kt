@@ -1,6 +1,13 @@
 package com.example.ciguide.Data.Model
 
-import androidx.annotation.DrawableRes
+import com.google.gson.annotations.SerializedName
 
-data class Item(val name: String, val description: String, @DrawableRes val imageRes: Int)
+data class Item(
+    val id: Int,
+    @SerializedName("item_name")
+    val name: String,
+    val description: String,
 
+    @SerializedName("image_url")
+    val imageUrl: String
+)

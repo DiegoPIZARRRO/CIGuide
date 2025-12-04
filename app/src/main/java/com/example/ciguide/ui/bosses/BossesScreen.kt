@@ -1,6 +1,6 @@
 package com.example.ciguide.ui.bosses
 
-import android.util.Xml
+import coil.compose.AsyncImage
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -31,29 +31,33 @@ fun BossesUI(viewModel: BossViewModel = viewModel()){
     var jefeSeleccionado by remember { mutableStateOf<Boss?>(null) }
 
 
-    Box(modifier = Modifier.fillMaxSize(),
+    Box(
+        modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ){
-        if(estado.cargando){
-            CircularProgressIndicator()
-        }
-        //Para mostrar el estado de carga error
-        estado.error?.let { errorMsg ->
+        if(estado.error != null){
             Text(
-                text = errorMsg,
+                text = estado.error!!,
                 modifier = Modifier.padding(16.dp),
                 color = MaterialTheme.colorScheme.error
             )
         }
 
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(16.dp)
-        ){
-            items(estado.bosses){boss ->
-                BossCard(boss = boss,
-                         onImageClick ={ jefeSeleccionado = boss }
-                )
+        else if(estado.cargando){
+            CircularProgressIndicator()
+        }
+
+        else{
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                contentPadding = PaddingValues(16.dp)
+            ) {
+                items(estado.bosses) { boss ->
+                    BossCard(
+                        boss = boss,
+                        onImageClick = { jefeSeleccionado = boss }
+                    )
+                }
             }
         }
         jefeSeleccionado?.let { boss ->
@@ -73,15 +77,15 @@ fun BossCard(boss: Boss, onImageClick: (Boss) -> Unit){
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ){
         Column ( modifier = Modifier.padding(16.dp)){
-            Image(
-               painter = painterResource(id = boss.imageRes),
-               contentDescription = "Imagen de ${boss.name}",
-               modifier = Modifier
-                   .fillMaxWidth()
-                   .height(200.dp)
-                   .clickable { onImageClick(boss) },
-                contentScale = ContentScale.Crop
+            AsyncImage(
+                model = boss.imageUrl,
+                contentDescription = boss.name,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp),
+                contentScale = ContentScale.Fit
             )
+
 
             Text(
                 text = boss.name,
@@ -96,7 +100,7 @@ fun BossCard(boss: Boss, onImageClick: (Boss) -> Unit){
                 fontWeight = FontWeight.SemiBold
             )
 
-            boss.itemrecommended.forEach { item ->
+            boss.itemRecomended.forEach { item ->
                 Text(text = "- $item")
             }
         }
@@ -120,9 +124,9 @@ fun ZoomImages(boss: Boss, onDismiss: () -> Unit){
                 .clickable{onDismiss()},
             contentAlignment = Alignment.Center
         ){
-            Image(
-                painter = painterResource(id = boss.imageRes),
-                contentDescription = "Imagen completa de ${boss.name}",
+            AsyncImage(
+                model = boss.imageUrl,
+                contentDescription = "Imagen ${boss.name}",
                 modifier = Modifier
                     .fillMaxSize()
                     .graphicsLayer(
