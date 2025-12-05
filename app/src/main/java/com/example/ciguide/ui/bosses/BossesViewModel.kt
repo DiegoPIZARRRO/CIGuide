@@ -13,8 +13,7 @@ data class uiStateBosses(
     val error: String? = null
 )
 
-class BossViewModel : ViewModel(){
-    private val repository = WikiRepository()
+class BossViewModel(private val repository: WikiRepository = WikiRepository()) : ViewModel(){
     private val _uiState = MutableStateFlow(uiStateBosses())
 
     val uiState: StateFlow<uiStateBosses> = _uiState.asStateFlow()

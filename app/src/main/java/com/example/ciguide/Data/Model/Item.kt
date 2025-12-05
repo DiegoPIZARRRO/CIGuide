@@ -6,8 +6,8 @@ data class Item(
     val id: Int,
     @SerializedName("item_name")
     val name: String,
-    val description: String,
+    val description: String?,
 
     @SerializedName("image_url")
-    val imageUrl: String
+    val imageUrl: String?
 )

@@ -93,14 +93,15 @@ fun BossCard(boss: Boss, onImageClick: (Boss) -> Unit){
                 fontWeight = FontWeight.Bold
             )
             Spacer(modifier = Modifier.height(8.dp))
-            Text(text = boss.description)
+            Text(text = boss.description ?: "")
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = "Items recomendados: ",
                 fontWeight = FontWeight.SemiBold
             )
 
-            boss.itemRecomended.forEach { item ->
+            // Corregido el nombre del campo a "itemRecommended"
+            boss.itemRecommended?.forEach { item ->
                 Text(text = "- $item")
             }
         }

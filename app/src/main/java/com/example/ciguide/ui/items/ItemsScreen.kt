@@ -90,8 +90,9 @@ fun itemCard(item: Item) {
                     style = MaterialTheme.typography.bodyMedium,
                     lineHeight = 20.sp
                 )
+                // Usamos el operador elvis para mostrar una cadena vacía si la descripción es nula
                 Text(
-                    text = item.description,
+                    text = item.description ?: "",
                     style = MaterialTheme.typography.bodySmall,
                     lineHeight = 20.sp
                 )
