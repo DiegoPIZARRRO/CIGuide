@@ -8,8 +8,8 @@ import os
 app = FastAPI()
 
 DB_USER = "CALAMITYDEV"
-DB_PASSWORD = "Contrasena12"
-DSN_NAME = "om7h1y6krf21abpa_low"
+DB_PASSWORD = "Tuclave"
+DSN_NAME = "DSNAQUI"
 WALLET_DIR = os.path.join(os.getcwd(), "wallet")
 
 # modelos
@@ -44,7 +44,7 @@ def get_db_connection():
         dsn=DSN_NAME,
         config_dir=WALLET_DIR,
         wallet_location=WALLET_DIR,
-        wallet_password="Paraset653987"
+        wallet_password="Contraaqui"
     )
 
 # endpoints
