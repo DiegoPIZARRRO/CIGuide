@@ -27,7 +27,7 @@ fun HomeScreen(navController: NavController){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Image(painter = painterResource(id = R.drawable.logo), contentDescription = "Logo")
+        Image(painter = painterResource(id = R.drawable.logo2), contentDescription = "Logo")
         Spacer(modifier = Modifier.height(16.dp))
         Text(
             text = "Guía de Calamity",

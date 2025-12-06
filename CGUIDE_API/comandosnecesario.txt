@@ -1,0 +1,4 @@
+python -m uvicorn main:app --reload
+
+& "C:\Users\edusi\AppData\Local\Android\Sdk\platform-tools\adb.exe" reverse tcp:8000 tcp:8000
+

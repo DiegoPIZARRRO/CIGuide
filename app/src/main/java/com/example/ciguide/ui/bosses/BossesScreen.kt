@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTransformGestures
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
 import androidx.compose.material3.*
@@ -122,7 +123,11 @@ fun ZoomImages(boss: Boss, onDismiss: () -> Unit){
             modifier = Modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.background.copy(alpha = 0.85f))
-                .clickable{onDismiss()},
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = null,
+                    onClick = onDismiss
+                ),
             contentAlignment = Alignment.Center
         ){
             AsyncImage(

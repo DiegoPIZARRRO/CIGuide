@@ -31,7 +31,7 @@ Scaffold(
         TopAppBar(
             title = {
                 Image(
-                    painter = painterResource(id = R.drawable.logo),
+                    painter = painterResource(id = R.drawable.logo2),
                     contentDescription = "Logo",
                     modifier = Modifier.height(65.dp)
 
