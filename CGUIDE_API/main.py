@@ -29,6 +29,12 @@ class Item(BaseModel):
     description: str
     image_url: str
 
+class CreateBoss(BaseModel):
+    boss_name: str
+    boss_description: str
+    vida: str
+    image_url: str
+
 #conexion a la bd
 
 def get_db_connection():
@@ -102,3 +108,52 @@ def get_items():
             cursor.close()
         if connetion:
             connetion.close()
+
+@app.post("/bosses/add")
+def create_boss(boss: CreateBoss):
+    connection = None
+    cursor = None
+    try:
+        connection = get_db_connection()
+        cursor = connection.cursor()
+        cursor.execute("""
+                       INSERT INTO bosses (boss_name, boss_description, vida, image_url)
+                       VALUES (:boss_name, :boss_description, :vida, :image_url)
+                       """, 
+                       boss_name=boss.boss_name,
+                       boss_description=boss.boss_description,
+                       vida=boss.vida,
+                       image_url=boss.image_url)
+        connection.commit()
+        return {"message": "Jefe creado exitosamente"}
+    except Exception as e:
+        print(f"Error creando jefe: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if cursor:
+            cursor.close()
+        if connection:
+            connection.close()
+
+@app.delete("/bosses/delete/{boss_id}")
+def delete_boss(boss_id: int):
+    connection = None
+    cursor = None
+    try:
+        connection = get_db_connection()
+        cursor = connection.cursor()
+        cursor.execute("""
+                       DELETE FROM bosses WHERE boss_id = :boss_id
+                       """, boss_id=boss_id)
+        connection.commit()
+        if cursor.rowcount == 0:
+            raise HTTPException(status_code=404, detail="Jefe no encontrado")
+        return {"message": "Jefe eliminado exitosamente"}
+    except Exception as e:
+        print(f"Error eliminando jefe: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if cursor:
+            cursor.close()
+        if connection:
+            connection.close()

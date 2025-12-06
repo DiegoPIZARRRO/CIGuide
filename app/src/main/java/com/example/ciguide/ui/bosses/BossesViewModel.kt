@@ -34,5 +34,21 @@ class BossViewModel(private val repository: WikiRepository = WikiRepository()) :
             }
         }
     }
+
+    fun deleteBoss(id: Int) {
+        viewModelScope.launch {
+            try {
+                val exito = repository.deleteBoss(id)
+
+                if (exito) {
+                    loadBosses()
+                } else {
+                    _uiState.update { it.copy(error = "Error al eliminar el jefe") }
+                }
+            } catch (e: Exception) {
+                _uiState.update { it.copy(error = "Error al eliminar el jefe: ${e.message}") }
+            }
+        }
+    }
 }
 

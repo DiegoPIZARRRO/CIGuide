@@ -18,4 +18,33 @@ class WikiRepository {
             emptyList()
         }
     }
+
+    suspend fun addBoss(name: String, description: String, vida: String, imageUrl: String): Boolean{
+        return try {
+            val newBoss = Boss(
+                id = 0,
+                name = name,
+                description = description,
+                vida = vida,
+                imageUrl = imageUrl,
+                emptyList(),
+                emptyList()
+            )
+            RetrofitClient.api.addBoss(newBoss)
+            true
+        } catch (e: Exception){
+            e.printStackTrace()
+            false
+        }
+    }
+
+    suspend fun deleteBoss(id: Int): Boolean {
+        return try {
+            RetrofitClient.api.deleteBoss(id)
+            true
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
+        }
+    }
 }

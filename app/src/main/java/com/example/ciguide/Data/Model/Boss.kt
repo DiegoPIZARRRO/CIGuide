@@ -12,6 +12,7 @@ data class Boss(
     @SerializedName("boss_description")
     val description: String?,
 
+    @SerializedName("vida")
     val vida: String?,
 
     @SerializedName("image_url")
