@@ -2,7 +2,7 @@
 
 Una aplicación Android conectada a una arquitectura de microservicios en la nube para proveer información en tiempo real de Terraria (Calamity Mod).
 
-## 🚀 Arquitectura
+## Arquitectura
 
 El proyecto sigue una arquitectura Cliente-Servidor:
 
@@ -21,14 +21,14 @@ El proyecto sigue una arquitectura Cliente-Servidor:
     * **Networking:** Retrofit2 + Gson (Consumo de API).
     * **Media:** Coil (Carga asíncrona de imágenes).
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 * **Lenguajes:** Kotlin, Python, SQL.
 * **Frameworks:** FastAPI, Jetpack Compose.
 * **Cloud:** Oracle Cloud Infrastructure.
 * **Herramientas:** Android Studio, VS Code, Git.
 
-## 🔧 Instalación y Ejecución
+## Instalación y Ejecución
 
 ### Backend (Python)
 1. Clonar el repositorio.
