@@ -1,4 +1,4 @@
-# CIGuide - Wiki no oficial 🎮
+# CIGuide - Wiki no oficial 
 
 Una aplicación Android conectada a una arquitectura de microservicios en la nube para proveer información en tiempo real de Terraria (Calamity Mod).
 
